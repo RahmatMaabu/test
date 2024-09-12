@@ -1,0 +1,26 @@
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+    "name" : "Muhammad Rahmat Maabu",
+    "username" : "rahmat",
+    "email" : "admin@gmail.com",
+    "password"  : "admin",
+    "confirmPassword" : "admin"
+}
+
+###
+POST http://localhost:3000/api/biodatasiswa
+Content-Type: application/json
+
+{
+    "fullName" : "Muhammmad Rahmat Maabu",
+    "nisn" : "22215040",
+    "ttl" : "Gorontalo, 15-09-2002",
+    "jenis_kelamin" : "Male",
+    "agama" : "Islam",
+    "nomor_hp" : "08123456789",
+    "email" : "muhammadrahmat.maabu@gmail.com",
+    "alamat" : "Botutonuo"
+}
+
