@@ -2,6 +2,8 @@ import Users from "@/models/Users";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from 'bcrypt';
+import { JWT } from "next-auth/jwt";
+import { Session } from "next-auth";
 
 export const authOptions = {
   pages: {
@@ -55,13 +57,13 @@ export const authOptions = {
     })
   ],
   callbacks: {
-    async jwt({ token, user }: { token: any; user?: { id: string } }) {
+    async jwt({ token, user }: { token: JWT, user?: { id: string } }) {
       if (user) {
         token.id = user.id;
       }
       return token;
     },
-    async session({ session, token }: { session: any; token: any }) {
+    async session({ session, token }: { session: Session, token: JWT }) {
       session.user = token;
       return session;
     }
