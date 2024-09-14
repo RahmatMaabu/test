@@ -1,16 +1,15 @@
 'use client';
 import React, { useState } from 'react';
-import Calendar from 'react-calendar';
+import Calendar, { CalendarProps } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { id } from 'date-fns/locale'; 
-
-
 
 const MYCalendar = () => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | null>(new Date());
 
-  const onChange = (newDate) => {
-    setDate(newDate);
+  const onChange: CalendarProps['onChange'] = (value) => {
+    if (value instanceof Date || value === null) {
+      setDate(value);
+    }
   };
 
   return (
@@ -19,7 +18,7 @@ const MYCalendar = () => {
       <Calendar
         onChange={onChange}
         value={date}
-        locale={id}
+        locale="id"
         className="w-full"
       />
     </div>
