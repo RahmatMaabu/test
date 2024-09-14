@@ -1,22 +1,28 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import Navbar from '../Navigation/Navbar.tsx';
+import React, { useState } from 'react';
 import SideBar from '../Navigation/SideBar';
 import DashboardContent from './DashboardContent/DashboardContent';
+import Navbar from '../Navigation/Navbar';
+import { Session } from 'next-auth';  
 
-const Dashboard = ({ session }:any) => {
-const [isActive , setIsActive] = useState(false);
-
-const handleSideNav = () => {
-  setIsActive(!isActive);
+interface DashboardProps {
+  session?: Session;  // Expect full session object from NextAuth
 }
+
+const Dashboard = ({ session }: DashboardProps) => {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleSideNav = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <>
-      <div className="relative z-plus top-0 h-16 ">
-      <Navbar onClick={handleSideNav} isActive={isActive} name={session}/>
-      {!isActive ? <SideBar/> : null}
+      <div className="relative z-plus top-0 h-16">
+        <Navbar onClick={handleSideNav} isActive={isActive} name={session?.user?.name || 'Guest'} /> {/* Access session.user */}
+        {!isActive ? <SideBar /> : null}
       </div>
-      <DashboardContent isActive={isActive}/>
+      <DashboardContent isActive={isActive} />
     </>
   );
 };

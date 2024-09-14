@@ -62,10 +62,10 @@ export async function POST(request: Request) {
       status: 200,
     });
 
-  } catch (error: any) {
+  } catch (error :unknown) {
     // Tampilkan error yang lebih spesifik
     console.error("Error in signup route:", error);
-    return new Response(JSON.stringify({ error: "Internal Server Error", details: error.message }), {
+    return new Response(JSON.stringify({ error: "Internal Server Error", details: error }), {
       status: 500,
     });
   }

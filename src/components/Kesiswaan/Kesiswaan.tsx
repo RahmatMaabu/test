@@ -1,10 +1,14 @@
 'use client';
 import React, { useState } from 'react'
 import SideBar from '../Navigation/SideBar';
-import Navbar from '../Navigation/Navbar.tsx';
 import KesiswaanContent from './KesiswaanContent/KesiswaanContent';
+import Navbar from '../Navigation/Navbar';
+import { Session } from 'next-auth';
 
-const Kesiswaan = ({ session }:any) => {
+interface KesiswaanProps {
+  session?: Session;
+}
+const Kesiswaan = ({ session }: KesiswaanProps) => {
     const [isActive , setIsActive] = useState(false);
 
     const handleSideNav = () => {
@@ -13,7 +17,7 @@ const Kesiswaan = ({ session }:any) => {
       return (
         <>
           <div className="relative z-plus top-0 h-16 ">
-          <Navbar onClick={handleSideNav} isActive={isActive} name={session}/>
+          <Navbar onClick={handleSideNav} isActive={isActive} name={session?.user?.name || 'Guest'}/>
           {!isActive ? <SideBar/> : null}
           </div>
           <KesiswaanContent isActive={isActive}/>
