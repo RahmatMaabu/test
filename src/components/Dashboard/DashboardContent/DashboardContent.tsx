@@ -3,7 +3,11 @@ import LaporanDashboard from './LaporanDashboard'
 import MYCalender from './MYCalender'
 import Informasi from './Informasi'
 
-const DashboardContent = ({ isActive }) => {
+interface DashboardContentProps {
+  isActive: boolean
+}
+
+const DashboardContent = ({ isActive }: DashboardContentProps) => {
   return (
     <div className={`relative  w-full h-screen bg-slate-100 ${!isActive ? 'pl-72' : 'pl-0'} z-minus`}>
       <div className="flex flex-col  gap-4 w-full h-full p-4">
