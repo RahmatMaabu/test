@@ -2,64 +2,64 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-   await queryInterface.createTable('siswa', {
-     id: {
-       type: Sequelize.INTEGER,
-       primaryKey: true,
-       autoIncrement: true
-     },
-     fullName: {
-       type: Sequelize.STRING,
-       allowNull: false,
-     },
-     nisn: {
-       type: Sequelize.INTEGER,
-       allowNull: false,
-       unique: true
-     },
-     ttl: {
-       type: Sequelize.STRING,
-       allowNull: false
-     },
-     jenis_kelamin: {
-       type: Sequelize.STRING,
-       allowNull: false
-     },
-     agama: {
-       type: Sequelize.STRING,
-       allowNull: false
-     },
-     nomor_hp: {
-       type: Sequelize.BIGINT,
-       allowNull: false
-     },
-     email: {
-       type: Sequelize.STRING,
-       allowNull: false,
-       unique: true,
-       validate: {
-         isEmail: true
-       }
-     },
-     alamat: {
-       type: Sequelize.STRING,
-       allowNull: false
-     },
-     createdAt: {
-       type: Sequelize.DATE,
-       allowNull: false,
-       defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-     },
-     updatedAt: {
-       type: Sequelize.DATE,
-       allowNull: false,
-       defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-     }
-   })
+  async up (queryInterface) { // Removed Sequelize
+    await queryInterface.createTable('siswa', {
+      id: {
+        type: 'INTEGER',
+        primaryKey: true,
+        autoIncrement: true
+      },
+      fullName: {
+        type: 'STRING',
+        allowNull: false,
+      },
+      nisn: {
+        type: 'INTEGER',
+        allowNull: false,
+        unique: true
+      },
+      ttl: {
+        type: 'STRING',
+        allowNull: false
+      },
+      jenis_kelamin: {
+        type: 'STRING',
+        allowNull: false
+      },
+      agama: {
+        type: 'STRING',
+        allowNull: false
+      },
+      nomor_hp: {
+        type: 'BIGINT',
+        allowNull: false
+      },
+      email: {
+        type: 'STRING',
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true
+        }
+      },
+      alamat: {
+        type: 'STRING',
+        allowNull: false
+      },
+      createdAt: {
+        type: 'DATE',
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') // Keep using Sequelize here
+      },
+      updatedAt: {
+        type: 'DATE',
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') // Keep using Sequelize here
+      }
+    });
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('siswa')
+  async down (queryInterface) { // Removed Sequelize
+    await queryInterface.dropTable('siswa');
   }
 };
