@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { JWT } from "next-auth/jwt";
 import { Session } from "next-auth";
 
-export const authOptions = {
+const handler = NextAuth({
   pages: {
     signIn: '/',
   },
@@ -68,8 +68,6 @@ export const authOptions = {
       return session;
     }
   }
-}
+});
 
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };
