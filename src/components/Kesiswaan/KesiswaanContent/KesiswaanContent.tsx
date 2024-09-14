@@ -1,7 +1,10 @@
 import React from 'react'
 import FormInputKesiswaan from './FormInputKesiswaan'
 
-const KesiswaanContent = ({ isActive }) => {
+interface KesiswaanContentProps {
+  isActive: boolean
+}
+const KesiswaanContent = ({ isActive }: KesiswaanContentProps) => {
   return (
     <div className={`relative  w-full h-screen bg-slate-100 ${!isActive ? 'pl-72' : 'pl-0'} z-minus`}>
       <div className="flex flex-col  gap-4 w-full h-full p-4">
