@@ -93,7 +93,7 @@ const FormInputKesiswaan = () => {
           id="address" 
           placeholder="Masukkan Alamat Lengkap" 
           className="w-full px-4 text-sm text-neutral-600 py-2 border-2 border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
-          rows="3"
+          rows={3}
           required
         />
       </div>
