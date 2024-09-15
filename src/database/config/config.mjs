@@ -11,7 +11,7 @@ const options = {
 
 if (process.env.NODE_ENV === 'production') {
     if (process.env.DATABASE_URL) {
-        options.url = process.env.DATABASE_URL;  // Use DATABASE_URL if available
+        options.url = process.env.DATABASE_URL;
     } else {
         options.dialectOptions = {
             ssl: {
@@ -24,6 +24,6 @@ if (process.env.NODE_ENV === 'production') {
 
 export default {
     development: options,
-    test: { ...options, logging: false },  // Disable logging in test environment
+    test: { ...options, logging: false },
     production: options,
 };
