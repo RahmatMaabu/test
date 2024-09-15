@@ -1,10 +1,13 @@
 import { Sequelize } from 'sequelize';
-import { SequelizeOptions } from 'sequelize-typescript'
-import options from './database/config/config.mjs';
+import { SequelizeOptions } from 'sequelize-typescript';
+import config from './database/config/config.mjs'; // Import default
 
-const dbOptions = <SequelizeOptions>options;
-dbOptions.dialectModule = require('pg')
+// Gunakan environment sesuai kondisi (production atau development)
+const environment = process.env.NODE_ENV || 'development';
+const dbOptions = <SequelizeOptions>config[environment];
+
+dbOptions.dialectModule = require('pg');
 
 const sequelize = new Sequelize(dbOptions);
 
-export default sequelize
+export default sequelize;
